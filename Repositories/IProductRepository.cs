@@ -11,5 +11,6 @@ namespace MyApiProject.Repositories
         Task<Product> AddAsync(Product product);
         Task UpdateAsync(Product product);
         Task<bool> DeleteProductAsync(int id);
+        Task<bool> SoftDeleteAsync(int id);
     }
 }

@@ -70,5 +70,14 @@ namespace MyApiProject.Controllers
             }
             return Ok(new { message = "Product deleted successfully." });
         }
+        [HttpDelete("softdelete/{id}")]
+        public async Task<IActionResult> SoftDelete(int id)
+        {
+            var result = await _service.SoftDeleteProductAsync(id);
+            if (!result)
+                return NotFound();
+
+            return Ok(new { message = "Product soft deleted successfully." });
+        }
     }
 }

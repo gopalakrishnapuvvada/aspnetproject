@@ -14,5 +14,7 @@ namespace MyApiProject.Models
 
         [Required]
         public decimal Price { get; set; }
+
+        public bool IsDeleted { get; set; } = false;
     }
 }

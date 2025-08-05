@@ -43,6 +43,10 @@ namespace MyApiProject.Services
         {
             return await _repo.DeleteProductAsync(id);
         }
+        public async Task<bool> SoftDeleteProductAsync(int id)
+        {
+            return await _repo.SoftDeleteAsync(id);
+        }
 
     }
 }

@@ -44,5 +44,22 @@ namespace MyApiProject.Controllers
             // Returns 201 Created with the new product's URL
             return CreatedAtAction(nameof(GetById), new { id = createdProduct.Id }, createdProduct);
         }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] Product product)
+        {
+            if (product == null || id != product.Id)
+                return BadRequest();
+
+            var updatedProduct = await _service.UpdateProductAsync(id, product);
+            if (updatedProduct == null)
+                return NotFound();
+
+            return Ok(new
+            {
+                message = "Product updated successfully.",
+                data = updatedProduct
+            });  // 204 response, successful update without returning content
+        }
+
     }
 }

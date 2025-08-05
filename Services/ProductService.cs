@@ -27,5 +27,18 @@ namespace MyApiProject.Services
         {
             return await _repo.AddAsync(product);
         }
+        public async Task<Product> UpdateProductAsync(int id, Product product)
+        {
+            var existingProduct = await _repo.GetByIdAsync(id);
+            if (existingProduct == null) return null;
+
+            existingProduct.Name = product.Name;
+            existingProduct.Price = product.Price;
+
+            await _repo.UpdateAsync(existingProduct);
+
+            return existingProduct;
+        }
+
     }
 }

@@ -30,5 +30,11 @@ namespace MyApiProject.Repositories
             await _context.SaveChangesAsync();
             return product;
         }
+        public async Task UpdateAsync(Product product)
+        {
+            _context.Products.Update(product);
+            await _context.SaveChangesAsync();
+        }
+
     }
 }

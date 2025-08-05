@@ -1,0 +1,102 @@
+# Build results
+bin/
+obj/
+
+# Visual Studio cache files, user-specific files
+.vs/
+*.user
+*.suo
+*.userprefs
+*.csproj.user
+
+# Rider IDE files
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# NuGet packages
+*.nupkg
+packages/
+
+# Logs
+*.log
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# User-specific files
+*.rsuser
+*.dotCover
+
+# JetBrains Rider local history
+.idea/
+
+# Resharper files
+_ReSharper*/
+*.DotSettings.user
+
+# Dotnet watch
+dotnet-watch.json
+
+# Publish output
+publish/
+
+# Publish Web Output
+wwwroot/
+
+# Local database files (SQLite, SQL Server LocalDB)
+*.mdf
+*.ldf
+*.sqlite
+*.db
+
+# ASP.NET Core secret storage
+secrets.json
+
+# IIS Express configuration
+.iisexpress/
+
+# Debugger files
+*.ilk
+*.pdb
+*.idb
+
+# Package directories
+node_modules/
+bower_components/
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Rider caches
+.idea/
+
+# Azure Pipelines
+azure-pipelines.yml
+
+# VS Code files
+.vscode/
+
+# DotNet EF Core Migrations files (usually you want to keep these!)
+# migrations/
+
+# Uncomment below to ignore the whole migrations folder (not recommended if you want migrations in repo)
+# Migrations/
+
+# User-specific VS Code files
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
+.vscode/extensions.json
+.cache
+.txt
+.dll
+.pdb
+.json
+.exe

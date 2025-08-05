@@ -85,5 +85,22 @@ namespace MyApiProject.Controllers
             var products = await _service.GetActiveProductsAsync();
             return Ok(products);
         }
+        [HttpGet("activewithoutisdeletedfield")]
+        public async Task<ActionResult<IEnumerable<ProductDto>>>  GetNonDeletedProducts()
+        {
+            var products = await _service.GetAllProductsAsync();
+
+            var activeProducts = products
+                .Where(p => !p.IsDeleted)
+                .Select(p => new ProductDto
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Price = p.Price
+                })
+                .ToList();
+
+            return Ok(activeProducts);
+        }
     }
 }

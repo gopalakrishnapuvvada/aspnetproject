@@ -39,6 +39,10 @@ namespace MyApiProject.Services
 
             return existingProduct;
         }
+        public async Task<bool> DeleteProductAsync(int id)
+        {
+            return await _repo.DeleteProductAsync(id);
+        }
 
     }
 }

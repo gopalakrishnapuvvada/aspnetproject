@@ -10,5 +10,6 @@ namespace MyApiProject.Repositories
         Task<Product?> GetByIdAsync(int id);
         Task<Product> AddAsync(Product product);
         Task UpdateAsync(Product product);
+        Task<bool> DeleteProductAsync(int id);
     }
 }

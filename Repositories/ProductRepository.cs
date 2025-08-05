@@ -35,6 +35,15 @@ namespace MyApiProject.Repositories
             _context.Products.Update(product);
             await _context.SaveChangesAsync();
         }
+        public async Task<bool> DeleteProductAsync(int id)
+        {
+            var product = await _context.Products.FindAsync(id);
+            if (product == null) return false;
+
+            _context.Products.Remove(product);
+            await _context.SaveChangesAsync();
+            return true;
+        }
 
     }
 }

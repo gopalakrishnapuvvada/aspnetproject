@@ -62,7 +62,14 @@ secrets.json
 *.ilk
 *.pdb
 *.idb
-
+bin/
+bin/
+obj/
+*.user
+*.vs/
+*.exe
+*.dll
+*.pdb
 # Package directories
 node_modules/
 bower_components/

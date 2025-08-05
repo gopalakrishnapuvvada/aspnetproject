@@ -60,6 +60,15 @@ namespace MyApiProject.Controllers
                 data = updatedProduct
             });  // 204 response, successful update without returning content
         }
-
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            bool deleted = await _service.DeleteProductAsync(id);
+            if (!deleted)
+            {
+                return NotFound(new { message = $"Product with ID {id} not found." });
+            }
+            return Ok(new { message = "Product deleted successfully." });
+        }
     }
 }

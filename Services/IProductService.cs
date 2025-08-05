@@ -12,5 +12,6 @@ namespace MyApiProject.Services
         Task<Product> UpdateProductAsync(int id, Product product);
         Task<bool> DeleteProductAsync(int id);
         Task<bool> SoftDeleteProductAsync(int id);
+        Task<IEnumerable<Product>> GetActiveProductsAsync();
     }
 }

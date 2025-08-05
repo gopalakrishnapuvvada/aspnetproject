@@ -47,6 +47,10 @@ namespace MyApiProject.Services
         {
             return await _repo.SoftDeleteAsync(id);
         }
+        public async Task<IEnumerable<Product>> GetActiveProductsAsync()
+        {
+            return await _repo.GetActiveProductsAsync();
+        }
 
     }
 }

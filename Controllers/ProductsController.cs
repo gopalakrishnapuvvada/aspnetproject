@@ -79,5 +79,11 @@ namespace MyApiProject.Controllers
 
             return Ok(new { message = "Product soft deleted successfully." });
         }
+        [HttpGet("activeProducts")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetActiveProducts()
+        {
+            var products = await _service.GetActiveProductsAsync();
+            return Ok(products);
+        }
     }
 }

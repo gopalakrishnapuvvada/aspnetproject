@@ -3,6 +3,7 @@ using MyApiProject.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace MyApiProject.Repositories
 {
@@ -55,7 +56,12 @@ namespace MyApiProject.Repositories
             await _context.SaveChangesAsync();
             return true;
         }
-
+        public async Task<IEnumerable<Product>> GetActiveProductsAsync()
+        {
+            return await _context.Products
+                                .Where(p => !p.IsDeleted)
+                                .ToListAsync();
+        }
 
     }
 }

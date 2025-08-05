@@ -102,5 +102,34 @@ namespace MyApiProject.Controllers
 
             return Ok(activeProducts);
         }
+        [HttpGet("deleteditems")]
+        public async Task<ActionResult<IEnumerable<ProductDto>>> GetDeletedProducts()
+        {
+            var products = await _service.GetAllProductsAsync();
+            var deleted = products
+                .Where(p => p.IsDeleted)
+                .Select(p => new ProductDto
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Price = p.Price
+                })
+                .ToList();
+
+            return Ok(deleted);
+        }
+        [HttpPatch("restore/{id}")]
+        public async Task<IActionResult> Restore(int id)
+        {
+            var product = await _service.GetProductByIdAsync(id);
+            if (product == null) return NotFound();
+
+            if (!product.IsDeleted) return BadRequest("Product is already active.");
+
+            product.IsDeleted = false;
+            await _service.UpdateProductAsync(id, product);
+
+            return Ok(new { message = "Product restored successfully" });
+        }
     }
 }

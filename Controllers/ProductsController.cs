@@ -3,6 +3,7 @@ using MyApiProject.Models;
 using MyApiProject.Services;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace MyApiProject.Controllers
 {
@@ -11,16 +12,20 @@ namespace MyApiProject.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IProductService _service;
+        private readonly ILogger<ProductsController> _logger;
 
-        public ProductsController(IProductService service)
+        public ProductsController(IProductService service, ILogger<ProductsController> logger)
         {
             _service = service;
+            _logger = logger;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetAll()
         {
+            _logger.LogInformation("Fetching all products at {Time}", DateTime.UtcNow);
             var products = await _service.GetAllProductsAsync();
+            _logger.LogInformation("Fetched {Count} products", products.Count());
             return Ok(products);
         }
 
